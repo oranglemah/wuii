@@ -18,13 +18,22 @@ from document_generator import (
     generate_employment_letter,
     image_to_bytes
 )
+# Load environment variables
+from dotenv import load_dotenv
 
+load_dotenv()
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+
+if not BOT_TOKEN:
+    print("❌ BOT_TOKEN belum di-set!")
+    exit(1)
+
+print("✅ Bot token loaded!")
 # =====================================================
 # KONFIGURASI
 # =====================================================
 
 # Bot tokens
-BOT_TOKEN = os.environ.get("BOT_TOKEN")
 LOG_BOT_TOKEN = os.environ.get("LOG_BOT_TOKEN")
 ADMIN_CHAT_ID = int(os.environ.get("ADMIN_CHAT_ID", "0"))
 BOT_NAME = os.environ.get("BOT_NAME", "K12_BOT")
